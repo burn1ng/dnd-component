@@ -2,10 +2,24 @@
   "name": "dnd-component",
   "version": "1.0.0",
   "description": "\u001b[A\u001b[BDrag'n'Drop component on ES6 and vanilla js for defining zone for storing any files or images",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "wp:server": "webpack-dev-server",
+    "wp": "webpack -w --progress --config ./webpack.config.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/burn1ng/dnd-component.git"
   },
   "author": "Andrei Dushkou",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "jquery": "^3.2.1",
+    "underscore": "^1.8.3"
+  },
+  "devDependencies": {
+    "eslint": "^4.8.0",
+    "webpack": "^3.6.0",
+    "webpack-dev-server": "^2.9.1"
+  }
 }
