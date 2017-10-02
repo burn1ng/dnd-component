@@ -1,0 +1,11 @@
+{
+  "name": "dnd-component",
+  "version": "1.0.0",
+  "description": "\u001b[A\u001b[BDrag'n'Drop component on ES6 and vanilla js for defining zone for storing any files or images",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Andrei Dushkou",
+  "license": "ISC"
+}
