@@ -4,8 +4,22 @@
   "description": "\u001b[A\u001b[BDrag'n'Drop component on ES6 and vanilla js for defining zone for storing any files or images",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "wp": "webpack --progress --colors --watch --config webpack.config.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/burn1ng/dnd-component.git"
   },
   "author": "Andrei Dushkou",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "jquery": "^3.2.1",
+    "underscore": "^1.8.3"
+  },
+  "devDependencies": {
+    "eslint": "^4.8.0",
+    "eslint-plugin-import": "^2.7.0",
+    "eslint-xbsoftware": "git+https://bitbucket.org/xbsltd/eslint.git"
+  }
 }
