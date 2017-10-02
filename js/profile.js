@@ -1,5 +1,5 @@
 export const user = {
-    name: 'Shsdfekhar Gusdfxdsf11',
+    name: 'Andrei Dushkov',
     messages: [
         'hello',
         'bye',
