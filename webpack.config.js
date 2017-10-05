@@ -1,34 +1,63 @@
 const path = require('path');
-const webpack  = require('webpack');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const webpack = require('webpack');
+const autoprefixer = require('autoprefixer');
 
 module.exports = {
-    entry: './app.js',
+    entry:  ['./src/index.js'],
+    plugins: [
+        new webpack.HotModuleReplacementPlugin(),
+        new ExtractTextPlugin({
+            filename: 'style.css',
+            disable: process.env.NODE_ENV === 'development'
+        })
+    ],
+    devtool: 'inline-source-map',
     output: {
-        path: path.resolve(__dirname, 'build'), // the target directory for all output files
-        publicPath: '/public/', // the url to the output directory resolved relative to the HTML page
-        filename: 'bundle.js'
-    },
-    devServer: {
-        hot: true,
-        port: 8080
+        filename: 'bundle.js',
+        path: path.resolve(__dirname, 'dist'), // the target directory for all output files
+        publicPath: '/dist/'
     },
     module: {
-        rules: [{
-            test: /\.scss$/,
-            use: [{
-                loader: 'style-loader'
-            }, {
-                loader: 'css-loader'
-            }, {
-                loader: 'sass-loader',
-                options: {
-                    includePaths: [path.resolve(__dirname, 'assets')]
+        rules: [
+            {
+                test: /\.scss$/,
+                use: ['css-hot-loader'].concat(ExtractTextPlugin.extract({
+                    fallback: 'style-loader',
+                    use: [
+                        {
+                            loader: 'css-loader'
+                        },
+                        {
+                            loader: 'postcss-loader',
+                            options: {
+                                plugins: [
+                                    autoprefixer({
+                                        browsers:['ie >= 8', 'last 4 version']
+                                    })
+                                ],
+                                sourceMap: true
+                            }
+                        },
+                        {
+                            loader: 'sass-loader',
+                            options: {
+                                sourceMap: true
+                            }
+                        }
+                    ]
+                }))
+            },
+            {
+                test: /\.js$/,
+                exclude: /(node_modules|bower_components)/,
+                use: {
+                    loader: 'babel-loader',
+                    options: {
+                        presets: ['env']
+                    }
                 }
-            }]
-        }]
-    },
-    plugins: [
-        new webpack.HotModuleReplacementPlugin()
-    ],
-    devtool: 'inline-source-map'
+            }
+        ]
+    }
 };

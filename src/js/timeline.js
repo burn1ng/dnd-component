@@ -16,4 +16,9 @@ export default class TimeLine {
             $('.timeline').append(html);
         });
     }
+
+    set_avatar(url) {
+        let html = `<img src="${url}">`;
+        $('.avatar').append(html);
+    }
 }
