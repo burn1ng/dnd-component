@@ -8,11 +8,9 @@ module.exports = {
     plugins: [
         new webpack.HotModuleReplacementPlugin(),
         new ExtractTextPlugin({
-            filename: 'style.css',
-            disable: process.env.NODE_ENV === 'development'
+            filename: 'style.css'
         })
     ],
-    devtool: 'inline-source-map',
     output: {
         filename: 'bundle.js',
         path: path.resolve(__dirname, 'dist'), // the target directory for all output files
@@ -29,21 +27,7 @@ module.exports = {
                             loader: 'css-loader'
                         },
                         {
-                            loader: 'postcss-loader',
-                            options: {
-                                plugins: [
-                                    autoprefixer({
-                                        browsers:['ie >= 8', 'last 4 version']
-                                    })
-                                ],
-                                sourceMap: true
-                            }
-                        },
-                        {
-                            loader: 'sass-loader',
-                            options: {
-                                sourceMap: true
-                            }
+                            loader: 'sass-loader'
                         }
                     ]
                 }))
@@ -54,7 +38,11 @@ module.exports = {
                 use: {
                     loader: 'babel-loader',
                     options: {
-                        presets: ['env']
+                        presets: ['env', {
+                            targets: {
+                                browsers: ['last 2 versions', 'ie10']
+                            }
+                        }]
                     }
                 }
             }

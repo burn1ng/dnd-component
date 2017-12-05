@@ -1,2 +1,19 @@
-@import './_typography.scss';
-@import './_style.scss';
+@for $i from 1 through 30000 {
+ .test#{$i} {
+    background-color: red;
+  }
+}
+
+@for $i from 1 through 35000 {
+ .hello {
+    .test#{$i} {
+      background-color: purple;
+    }
+  }
+}
+
+@for $i from 1 through 500 {
+	.unused#{$i} {
+		background-color: yellow;
+	}
+}
